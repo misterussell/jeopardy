@@ -14,6 +14,7 @@ export default React.createClass({
   },
   componentWillMount() {
     store.categories.getCategoryData();
+    // console.log(this.state.cats);
     store.categories.on('update change', () => {
       this.setState({
         cats: store.categories.toJSON()
@@ -21,10 +22,11 @@ export default React.createClass({
     });
   },
   render() {
+    console.log(this.state.cats);
     return (
       <div className="jeopardy-game">
         <Nav />
-        <QuestionList />
+        <QuestionList category={this.state.cats}/>
         <Answer />
         <Score />
       </div>
