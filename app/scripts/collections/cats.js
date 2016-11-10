@@ -16,23 +16,26 @@ export default Backbone.Collection.extend({
       catNumbers[i] = Math.floor(Math.random() * 100) + 1;
       i++;
     } while (i<7);
-    console.log(catNumbers)
+    // console.log(catNumbers)
+    return catNumbers;
   },
   getCategoryData() {
-    $.ajax({
-      type: 'GET',
-      url: 'http://jservice.io/api/category?id=245',
-      success: (response) => {
-        // window.console.log('Retrieved');
-        // raw data stored to the collectio with this
-        this.newCategories();
-        this.add(response)
-        // this.add(this.sortClues(response));
-        // response.sortClues();
-      },
-      error(response) {
-        window.console.log('Data not retrieved!');
-      }
+    let findCats = this.newCategories();
+    findCats.forEach((cat, i, arr) => {
+      $.ajax({
+        type: 'GET',
+        url: `http://jservice.io/api/category?id=${cat}`,
+        success: (response) => {
+          // window.console.log('Retrieved');
+          // raw data stored to the collectio with this
+          this.add(response);
+          // this.add(this.sortClues(response));
+          // response.sortClues();
+        },
+        error(response) {
+          window.console.log('Data not retrieved!');
+        }
+      });
     });
   }
 });
