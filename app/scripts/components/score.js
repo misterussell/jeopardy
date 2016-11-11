@@ -4,7 +4,7 @@ export default React.createClass({
   render() {
     return (
       <aside className="score">
-        Score will go here
+        ${this.props.score}
       </aside>
     );
   }

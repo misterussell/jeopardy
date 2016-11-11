@@ -1,5 +1,7 @@
 import Backbone from 'backbone';
 
+import Clue from './clue';
+
 export default Backbone.Model.extend({
   initialize(response) {
     this.set(this.parse(response));
@@ -7,7 +9,7 @@ export default Backbone.Model.extend({
   defaults: {
         title: '',
         id: '',
-        clues: []
+        clues: [],
   },
   parse(response) {
     // console.log(category.clues);
@@ -22,7 +24,7 @@ export default Backbone.Model.extend({
       let vals = [100,200,300,400,500,600,700,800];
       do {
         if (clue.value===vals[x]) {
-          filtered.clues[x] = clue;
+          filtered.clues[x] = new Clue(clue);
         }
         x++;
       } while (x <= vals.length);
