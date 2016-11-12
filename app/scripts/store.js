@@ -3,5 +3,5 @@ import Session from './models/session';
 
 export default {
   categories: new Categories(),
-  session: new Session()
+  session: new Session(),
 };
