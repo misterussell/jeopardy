@@ -3,7 +3,7 @@ import React from 'react';
 //components
 import Nav from '../Nav';
 import Categories from '../categories';
-import Modal from '..modalBlock';
+import Modal from '../modalBlock';
 import Answer from '../answer';
 import Score from '../score';
 
@@ -14,8 +14,7 @@ export default React.createClass({
   getInitialState() {
     return {
       cats: store.categories.toJSON(),
-      score: store.session.score
-      // answer: store.session.answer
+      session: store.session
     };
   },
   componentWillMount() {
@@ -33,7 +32,7 @@ export default React.createClass({
       <div className="jeopardy-game">
         <Nav />
         <Categories category={this.state.cats} />
-        <Modal session={this.state.session} />
+        <Modal data={this.state.session} />
         <Answer answers={this.state.answer} />
         <Score score={this.state.score} />
       </div>

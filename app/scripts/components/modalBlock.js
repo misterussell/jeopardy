@@ -1,31 +1,76 @@
 import React from 'react';
 
+import store from '../store';
+
 export default React.createClass({
-  render() {
-    console.log(this.props.data);
-    return (
-      <aside className="modal">
-        <div className="modalQuestion">
-          <h4>Category Title Here</h4>
-          <p>{this.props.data.get('question')}</p>
-          <form className="question-form" action="index.html" method="post">
-            <input type="text" placeholder="Answer here" className="answer" value=""/>
-            <button type="button" name="button" className="modal-button confirm" onClick={this.handleConfirm}>Check Answer</button>
-            <button type="button" name="button" className="modal-button pass" onClick={this.handleCancel}>Pass</button>
-          </form>
-        </div>
-      </aside> );
+  getInitialState() {
+    return {
+      modal: this.props.data.get('modal')
+    }
   },
-  handleConfirm(e) {
-    e.preventDefault();
+  componentWillMount() {
+    this.props.data.on('change', () => {
+      this.setState({
+        modal: this.props.data.get('modal')
+      });
+    });
+  },
+  render() {
+  let modalBlock = <div className="emptyModal"></div>;
+  if (this.state.modal) {
+      modalBlock = (
+        <aside className="modal">
+          <div className="modalQuestion">
+            <h4>Category Title Here</h4>
+            <p>Question text goes here</p>
+            <form className="question-form" action="index.html" method="post">
+              <input type="text" placeholder="Answer here" id="answer"/>
+              <button type="button" name="button" className="modal-button confirm" onClick={this.handleClick}>Check Answer</button>
+              <button type="button" name="button" className="modal-button pass" onClick={this.handleClick}>Pass</button>
+            </form>
+          </div>
+        </aside> );
+    }
+    return modalBlock;
+  },
+  handleClick(e) {
     // confirm needs to check the answer
     // after checking the answer if it is right, the session score should be adjusted
     // if the answer was wrong the session store should not be adjusted
-    console.log('confirm clicked');
-  },
-  handlePass(e) {
     e.preventDefault();
-    // cancel should close the modal and not affect any of the parameters
-    console.log('cancel clicked');
+    let userAnswer = document.getElementById('answer').value.trim();
+    console.log(userAnswer);
+    if (userAnswer === '') {
+      console.log('passed');
+    } else {
+      console.log('failed')
+      this.props.data.checkAnswer(userAnswer);
+      this.props.data.handleModal();
+    }
   }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+// OLD Data
+// <aside className="modal">
+//   <div className="modalQuestion">
+//     <h4>Category Title Here</h4>
+//     <p>{this.props.data.get('question')}</p>
+//     <form className="question-form" action="index.html" method="post">
+//       <input type="text" placeholder="Answer here" className="answer" value=""/>
+//       <button type="button" name="button" className="modal-button confirm" onClick={this.handleConfirm}>Check Answer</button>
+//       <button type="button" name="button" className="modal-button pass" onClick={this.handleCancel}>Pass</button>
+//     </form>
+//   </div>
+// </aside> );
