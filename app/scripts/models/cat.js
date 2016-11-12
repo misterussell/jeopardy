@@ -14,6 +14,7 @@ export default Backbone.Model.extend({
   parse(response) {
     // console.log(category.clues);
     // need to create an array with only 1 question of each value
+    console.log(response);
     let filtered = {
       title: response.title,
       id: response.id,

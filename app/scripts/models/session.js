@@ -20,7 +20,7 @@ export default Backbone.Model.extend({
       console.log('modal changed to false');
     }
   },
-  checkAnswer() {
+  checkAnswer(userAnswer) {
     if (userAnswer === this.get('answer')) {
       console.log('you got it right');
     } else {

@@ -33,7 +33,7 @@ export default React.createClass({
         <Nav />
         <Categories category={this.state.cats} />
         <Modal data={this.state.session} />
-        <Answer answers={this.state.answer} />
+        <Answer data={this.state.session} />
         <Score score={this.state.score} />
       </div>
     );

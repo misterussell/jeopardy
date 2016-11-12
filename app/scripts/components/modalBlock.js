@@ -21,8 +21,7 @@ export default React.createClass({
       modalBlock = (
         <aside className="modal">
           <div className="modalQuestion">
-            <h4>Category Title Here</h4>
-            <p>Question text goes here</p>
+            <p>{this.props.data.get('question').get('question')}</p>
             <form className="question-form" action="index.html" method="post">
               <input type="text" placeholder="Answer here" id="answer"/>
               <button type="button" name="button" className="modal-button confirm" onClick={this.handleClick}>Check Answer</button>
@@ -41,7 +40,7 @@ export default React.createClass({
     let userAnswer = document.getElementById('answer').value.trim();
     console.log(userAnswer);
     if (userAnswer === '') {
-      console.log('passed');
+      alert('Please enter a valid answer');
     } else {
       console.log('failed')
       this.props.data.checkAnswer(userAnswer);
