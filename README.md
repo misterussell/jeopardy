@@ -1,5 +1,5 @@
 # Basic
-- A basic jeapordy app
+- A basic jeopardy app
 
 ## Planning
   1. Wireframing
