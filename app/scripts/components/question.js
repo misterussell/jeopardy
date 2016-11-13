@@ -27,13 +27,11 @@ export default React.createClass({
         </h6>
       );
     } else {
-      listItem = <li></li>;
+      listItem = <h6></h6>;
     }
 
     return (
-      <li>
-        {listItem}
-      </li>
+        <li>{listItem}</li>
     );
   },
   handleClick(e) {

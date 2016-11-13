@@ -3,15 +3,18 @@ import Backbone from 'backbone';
 import Clue from './clue';
 
 export default Backbone.Model.extend({
+  model: Clue,
   initialize(response) {
     this.set(this.parse(response));
   },
+  comparator: 'value',
   defaults: {
         title: '',
         id: '',
         clues: [],
   },
   parse(response) {
+    // console.log(response);
     // console.log(category.clues);
     // need to create an array with only 1 question of each value
     // console.log(response);
@@ -30,6 +33,7 @@ export default Backbone.Model.extend({
         x++;
       } while (x <= vals.length);
     });
+    console.log(filtered);
     return filtered;
   }
 });

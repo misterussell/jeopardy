@@ -39,7 +39,7 @@
   2. Data Modeling
     - Preliminary data modeling included:
       1. `Collection` of Categories
-        - With methods to randomize api endpoints and retrieve server data
+        - With methods to randomize api endpoints and retrieve server data.
       2. `Model` of a single Collection
         - With a method to filter the data and retrieve single questions for the required values of the games. This was handled in pair by parsing server supplied collection data.
       3. `Session` to house player's running score
@@ -49,8 +49,8 @@
 ## Process
   1. Early level React codeblocks were structred with hardcoded HTML
   2. Once these elements were displaying to the DOM, `collection` and `model` retrieval was prioritized and verified through the console.
-  3. React codeblocks were then edited to implement API data as stored in the [parent data store](/app/store.js)
-  4. Once dynamic data generation was confirmed functional and rendering to the DOM `Modal` display was prioritized as this was the first real implementation of handling re-rending with unidirectional data-flow.
+  3. React codeblocks were then edited to implement API data as stored in the [parent data store](/app/store.js).
+  4. Once dynamic data generation was confirmed functional and rendering to the DOM `Modal` display was prioritized as this was the first real implementation of handling re-rending, with unidirectional data-flow, from User Interaction rather than async data generation.
     * Note: Due to the structure of the data from the API the collections that were created initially were not mirror images of each other. At this point coercing/re-retrieving of data, to have collections of the same number of questions, was deemed a late-stage priority as the concentration of the project, for me, was the unidirectional data-flow.
   5. The `Modal` display proved to be one of the more difficult tasks to handle, utilizing a method on the single question that affected a child element on the parent level container, rather than on the `this` of that component.
   6. Once the `Modal` was functional the data-flow process was evident and much faster to implement for other smaller components.

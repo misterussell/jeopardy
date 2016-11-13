@@ -16,7 +16,6 @@ export default Backbone.Collection.extend({
       catNumbers[i] = Math.floor(Math.random() * 100) + 1;
       i++;
     } while (i<6);
-    // console.log(catNumbers);
     return catNumbers;
   },
   getCategoryData() {
@@ -26,7 +25,6 @@ export default Backbone.Collection.extend({
         type: 'GET',
         url: `http://jservice.io/api/category?id=${cat}`,
         success: (response) => {
-          // window.console.log('Retrieved');
           // raw data stored to the collection with this
           this.add(response);
         },
