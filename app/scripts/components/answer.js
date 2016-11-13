@@ -17,7 +17,7 @@ export default React.createClass({
     // console.log(this.state.answer);
     return (
       <aside className="answer">
-        {this.state.answer}
+        <h5>{this.state.answer}</h5>
       </aside>
     );
   }

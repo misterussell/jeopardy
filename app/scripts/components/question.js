@@ -22,18 +22,18 @@ export default React.createClass({
     //value handling
     if(!this.state.question.get('answered')) {
       listItem = (
-        <li onClick={this.handleClick}>
+        <h6 onClick={this.handleClick}>
           {this.state.question.get('value')}
-        </li>
+        </h6>
       );
     } else {
       listItem = <li></li>;
     }
 
     return (
-      <main>
+      <li>
         {listItem}
-      </main>
+      </li>
     );
   },
   handleClick(e) {

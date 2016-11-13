@@ -4,8 +4,7 @@ import React from 'react';
 import Nav from '../Nav';
 import Categories from '../categories';
 import Modal from '../modalBlock';
-import Answer from '../answer';
-import Score from '../score';
+import ScoreKeeper from '../scoreKeeper';
 
 //data store
 import store from '../../store';
@@ -27,7 +26,6 @@ export default React.createClass({
       });
     });
     store.session.on('update change', () => {
-      console.log('session changed!');
       this.setState({
         session: store.session
       });
@@ -39,8 +37,7 @@ export default React.createClass({
         <Nav />
         <Categories category={this.state.cats} />
         <Modal data={this.state.session} />
-        <Answer data={this.state.session} />
-        <Score score={this.state.session} />
+        <ScoreKeeper data={this.state.session} />
       </div>
     );
   }

@@ -27,6 +27,7 @@ export default Backbone.Model.extend({
       this.calculateScore();
     } else {
       alert(`${answer} was the correct choice.`);
+      this.calculateScore();
     }
     this.updateAnswer(answer);
   },
@@ -35,7 +36,7 @@ export default Backbone.Model.extend({
     let questionVal = this.get('question').get('value');
     currentScore += questionVal;
     this.set({score: currentScore});
-
+    console.log(this.get('score'));
   },
   updateAnswer(newAnswer) {
     this.set({answerBoxText: newAnswer});

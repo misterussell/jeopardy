@@ -1,0 +1,28 @@
+.score-keeper {
+  width: 20rem;
+  margin: 0 auto;
+  padding-top: 1rem;
+
+  .answer {
+    box-sizing: border-box;
+    float:left;
+    display: inline-block;
+    width: 10rem;
+    height: 5rem;
+
+    background: $color-complement-1;
+    font-size: 1rem;
+    color: white;
+  }
+
+  .score {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 10rem;
+    height: 5rem;
+    padding: 1.5rem;
+    background: $color-primary-2;
+    font-size: 2rem;
+    color: $color-complement-4;
+  }
+}

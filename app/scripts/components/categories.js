@@ -11,7 +11,7 @@ export default React.createClass({
         </div>
       );
     });
-    return <div> {category} </div>;
+    return <div className="category"> {category} </div>;
   },
   handleClick() {
     return null;
