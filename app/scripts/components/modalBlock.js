@@ -22,11 +22,9 @@ export default React.createClass({
         <aside className="modal">
           <div className="modalQuestion">
             <p>{this.props.data.get('question').get('question')}</p>
-            <form className="question-form" action="index.html" method="post">
               <input type="text" placeholder="Answer here" id="answer"/>
               <button type="button" name="button" className="modal-button confirm" onClick={this.handleClick}>Check Answer</button>
               <button type="button" name="button" className="modal-button pass" onClick={this.handleClick}>Pass</button>
-            </form>
           </div>
         </aside> );
     }
