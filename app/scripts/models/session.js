@@ -8,30 +8,36 @@ export default Backbone.Model.extend({
     question: null
   },
   handleModal(question) {
+    //conditional addition of selected question data
+    //nothing set if no question is entered as this assumes modal should hide
     if (question) {
       this.set({question});
-      console.log(this.get('question'));
     }
+    //conditional toggle of modal status to show/hide
     if (!this.get('modal')) {
       this.set({modal: true});
-      console.log('modal changed to true');
     } else {
       this.set({modal: false});
-      console.log('modal changed to false');
     }
   },
   checkAnswer(userAnswer) {
-    if (userAnswer === this.get('answer')) {
-      console.log('you got it right');
+    let answer = this.get('question').get('answer');
+    if (userAnswer === answer) {
+      alert(`${answer} is correct`);
+      this.calculateScore();
     } else {
-      console.log('you got it wrong');
+      alert(`${answer} was the correct choice.`);
     }
-    this.updateAnswer(this.get('answer'));
+    this.updateAnswer(answer);
   },
   calculateScore() {
+    let currentScore = this.get('score');
+    let questionVal = this.get('question').get('value');
+    currentScore += questionVal;
+    this.set({score: currentScore});
 
   },
-  updateAnswer() {
-    this.set({answerBoxText: this.get('answer')})
+  updateAnswer(newAnswer) {
+    this.set({answerBoxText: newAnswer});
   }
 });

@@ -5,24 +5,40 @@ import ModalBlock from './modalBlock';
 import store from '../store';
 
 export default React.createClass({
+  getInitialState() {
+    return {
+      question: this.props.question
+    };
+  },
+  componentWillMount() {
+    this.props.question.on('change', () => {
+      this.setState({
+        question: this.props.question
+      });
+    });
+  },
   render() {
-    const q = this.props.question;
+    let listItem;
     //value handling
-    let value;
-    if(!q.get('answered')) {
-      value = q.get('value');
-    } else value = '';
+    if(!this.state.question.get('answered')) {
+      listItem = (
+        <li onClick={this.handleClick}>
+          {this.state.question.get('value')}
+        </li>
+      );
+    } else {
+      listItem = <li></li>;
+    }
 
     return (
       <main>
-        <li onClick={this.handleClick}>
-          {value}
-        </li>
+        {listItem}
       </main>
     );
   },
   handleClick(e) {
     e.preventDefault();
+    this.props.question.changeStatus();
     store.session.handleModal(this.props.question);
   }
 });

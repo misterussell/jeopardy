@@ -26,6 +26,12 @@ export default React.createClass({
         cats: store.categories.toJSON()
       });
     });
+    store.session.on('update change', () => {
+      console.log('session changed!');
+      this.setState({
+        session: store.session
+      });
+    });
   },
   render() {
     return (
@@ -34,7 +40,7 @@ export default React.createClass({
         <Categories category={this.state.cats} />
         <Modal data={this.state.session} />
         <Answer data={this.state.session} />
-        <Score score={this.state.score} />
+        <Score score={this.state.session} />
       </div>
     );
   }

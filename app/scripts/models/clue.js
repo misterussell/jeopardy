@@ -1,6 +1,5 @@
 import Backbone from 'backbone';
 
-
 export default Backbone.Model.extend({
   idAttribute: 'id',
   defaults: {
@@ -8,5 +7,8 @@ export default Backbone.Model.extend({
     value: '',
     answer: '',
     answered: false
+  },
+  changeStatus() {
+    this.set({answered: true});
   }
 });
