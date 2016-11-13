@@ -7,7 +7,7 @@
       - Minimum requirements: Clean, colourful, no animations
       - Goal requirements: Low-impact animations, more complicated geometric elements added to page for visual impact.
     - Wireframing from this project includded mapping all parent and child components
-    - A single parent element holds all child elements as the page structure does not change during gameplay. *See:* [container compoenent app.js](/app/scripts/components/containers/app.js)
+    - A single parent element holds all child elements as the page structure does not change during gameplay. *See:* [container component app.js](/app/scripts/components/containers/app.js)
     - `On page modal` vs. `new link modal`
       - The decision to include the modal on the same page was made to allow for further practice of the flexible unidirectional flow of data allowed by React.
       - A boolean key/value was structured in a single session Model, that when toggled hides/views the question modal.
