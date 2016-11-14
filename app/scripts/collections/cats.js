@@ -32,9 +32,9 @@ export default Backbone.Collection.extend({
     // console.log(store);
     if (category.clues_count < 30) {
       this.getCategoryData();
-      window.console.log('Less than 10 questions, searching again.');
+      window.console.log('Less than 30 questions, searching again.');
     } else {
-      window.console.log('More than 10 questions, adding collection.');
+      window.console.log('More than 30 questions, adding collection.');
       this.add(category);
     }
   },
