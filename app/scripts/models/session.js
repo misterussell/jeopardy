@@ -22,12 +22,14 @@ export default Backbone.Model.extend({
   },
   checkAnswer(userAnswer) {
     let answer = this.get('question').get('answer');
-    if (userAnswer === answer) {
+    let trimmedAnswer = this.get('question').get('answer').toLowerCase().replace(/\<[\/]?i\>/g, '');
+    if (userAnswer === trimmedAnswer) {
       alert(`${answer} is correct`);
       this.calculateScore();
+    } else if (userAnswer === 'pass'){
+      alert(`The correct answer was ${answer}`);
     } else {
-      alert(`${answer} was the correct choice.`);
-      this.calculateScore();
+      alert(`No Beans! ${answer} was the correct choice.`);
     }
     this.updateAnswer(answer);
   },
@@ -36,7 +38,6 @@ export default Backbone.Model.extend({
     let questionVal = this.get('question').get('value');
     currentScore += questionVal;
     this.set({score: currentScore});
-    console.log(this.get('score'));
   },
   updateAnswer(newAnswer) {
     this.set({answerBoxText: newAnswer});

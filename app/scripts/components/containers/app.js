@@ -17,7 +17,7 @@ export default React.createClass({
     };
   },
   componentWillMount() {
-    store.categories.getCategoryData();
+    store.categories.loadData();
     // console.log(store.session.get('score'));
     // this.setState({ score: store.session.get('score') });
     store.categories.on('update change', () => {

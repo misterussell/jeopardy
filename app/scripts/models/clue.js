@@ -3,8 +3,7 @@ import Backbone from 'backbone';
 export default Backbone.Model.extend({
   idAttribute: 'id',
   defaults: {
-    question: '',
-    value: '',
+    value: 100,
     answer: '',
     answered: false
   },

@@ -6,7 +6,7 @@ export default React.createClass({
   getInitialState() {
     return {
       modal: this.props.data.get('modal')
-    }
+    };
   },
   componentWillMount() {
     this.props.data.on('change', () => {
@@ -22,20 +22,20 @@ export default React.createClass({
         <aside className="modal">
           <div className="modalQuestion">
             <p>{this.props.data.get('question').get('question')}</p>
-              <input type="text" placeholder="Answer here" id="answer"/>
-              <button type="button" name="button" className="modal-button confirm" onClick={this.handleClick}>Check Answer</button>
-              <button type="button" name="button" className="modal-button pass" onClick={this.handleClick}>Pass</button>
+              <input type="text" placeholder="What is..." id="answer"/>
+              <button type="button" name="button" className="modal-button confirm" onClick={this.handleConfirm}>Check Answer</button>
+              <button type="button" name="button" className="modal-button pass" onClick={this.handlePass}>Pass</button>
           </div>
         </aside> );
     }
     return modalBlock;
   },
-  handleClick(e) {
+  handleConfirm(e) {
     // confirm needs to check the answer
     // after checking the answer if it is right, the session score should be adjusted
     // if the answer was wrong the session store should not be adjusted
     e.preventDefault();
-    let userAnswer = document.getElementById('answer').value.trim();
+    let userAnswer = document.getElementById('answer').value.trim().toLowerCase().replace(/\<[\/]?i\>/g, '');
     console.log(userAnswer);
     if (userAnswer === '') {
       alert('Please enter a valid answer');
@@ -44,6 +44,11 @@ export default React.createClass({
       this.props.data.checkAnswer(userAnswer);
       this.props.data.handleModal();
     }
+  },
+  handlePass(e) {
+    e.preventDefault();
+    this.props.data.checkAnswer('pass');
+    this.props.data.handleModal();
   }
 });
 
