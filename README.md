@@ -54,7 +54,11 @@
     * Note: Due to the structure of the data from the API the collections that were created initially were not mirror images of each other. At this point coercing/re-retrieving of data, to have collections of the same number of questions, was deemed a late-stage priority as the concentration of the project, for me, was the unidirectional data-flow.
   5. The `Modal` display proved to be one of the more difficult tasks to handle, utilizing a method on the single question that affected a child element on the parent level container, rather than on the `this` of that component.
   6. Once the `Modal` was functional the data-flow process was evident and much faster to implement for other smaller components.
-  7. Styling and visual structure was started
+  7. Styling and visual structure edited to meet minimum requirements.
+  8. Model adjustments: Two edits are anticipated in the data-retrieval so that the correct number of questions.
+    1. Adjusting the codeblock for the initial model retrieval so that no models with less than the correct number are parsed. I have over-estimated this by requiring that the model contain at least 30 "clues". `complete`
+    2. Adjusting the loop in the [single category model](/app/scripts/models/cat.js) so that it does not pull only the first value that matches the predetermined requirement. `incomplete`.
+  - Note: one of the fun aspects of this project was that I implemented the randomization very early. Rather than adjusting this so that I could work with the same data, and be able to predict the data to test true/false values, I choose to proof all truth tests in the false returns. 
 
 ### Dependencies
 - [jService API](http://jservice.io/)
