@@ -6,7 +6,7 @@ export default React.createClass({
   getInitialState() {
     return {
       modal: this.props.data.get('modal')
-    }
+    };
   },
   componentWillMount() {
     this.props.data.on('change', () => {
